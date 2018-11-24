@@ -19,6 +19,7 @@ float vectorLength(const MLVec3f &v);
 MLVec3f normalizeVector(const MLVec3f &v);
 float quaternionLength(const MLQuaternionf &q);
 MLQuaternionf normalizeQuaternion(const MLQuaternionf &q);
+MLQuaternionf multiplyQuaternions(const MLQuaternionf &qa, const MLQuaternionf &qb);
 MLQuaternionf getQuaternionFromUnitVectors(const MLVec3f &vFrom, const MLVec3f &vTo);
 MLVec3f getTriangleNormal(const MLVec3f &a, const MLVec3f &b, const MLVec3f &c);
 void orthonormalizeVectors(MLVec3f &normal, MLVec3f &tangent);
