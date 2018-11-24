@@ -87,10 +87,13 @@ MLPlane floorResults[MAX_NUM_PLANES];
 uint32_t numFloorResults;
 bool floorRequestPending = false;
 struct LargestFloor {
-  float y;
+  MLVec3f position;
   float size;
 };
-LargestFloor largestFloor{0, 0};
+LargestFloor largestFloor{
+  {0, 0, 0}
+  0,
+};
 
 MLHandle planesTracker;
 std::vector<MLPlaneTracker *> planeTrackers;
@@ -2707,7 +2710,7 @@ NAN_METHOD(MLContext::PostPollEvents) {
 
         if (size > largestFloor.size) {
           largestFloor = {
-            plane.position.y,
+            plane.position,
             size,
           };
         }
