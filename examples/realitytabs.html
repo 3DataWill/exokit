@@ -838,7 +838,7 @@ function animate(time, frame) {
           localQuaternion.fromArray(gamepad.pose.orientation),
           localVector2.set(1, 1, 1)
         )
-          .toArray(pose.pointerMatrix);
+          .toArray(pose.targetRay.transformMatrix);
       }
     }
   };
@@ -852,7 +852,7 @@ function animate(time, frame) {
         const inputSource = inputSources[i];
         const pose = frame.getInputPose(inputSource);
         const controllerMesh = controllerMeshes[i];
-        controllerMesh.matrix.fromArray(pose.pointerMatrix);
+        controllerMesh.matrix.fromArray(pose.targetRay.transformMatrix);
         controllerMesh.matrix.decompose(controllerMesh.position, controllerMesh.quaternion, controllerMesh.scale);
         controllerMesh.updateMatrixWorld(true);
       }
@@ -1106,7 +1106,7 @@ function animate(time, frame) {
               switch (key) {
                 case 'enter': {
                   const pose = frame.getInputPose(inputSource);
-                  localMatrix.fromArray(pose.pointerMatrix)
+                  localMatrix.fromArray(pose.targetRay.transformMatrix)
                     .decompose(localVector, localQuaternion, localVector2);
 
                   const u = urlMesh.urlState.text !== DEFAULT_URL ? urlMesh.urlState.text : 'realitytab.html?color=29b6f6';
@@ -1190,7 +1190,7 @@ function animate(time, frame) {
 
           if (bumper && !lastBumper) {
             const pose = frame.getInputPose(inputSource);
-            localMatrix.fromArray(pose.pointerMatrix)
+            localMatrix.fromArray(pose.targetRay.transformMatrix)
               .decompose(localVector, localQuaternion, localVector2);
 
             // _handleRigToggle(localVector, localQuaternion);
