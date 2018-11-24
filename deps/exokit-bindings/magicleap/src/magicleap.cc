@@ -2522,7 +2522,7 @@ NAN_METHOD(MLContext::PrePollEvents) {
       } else {
         return false;
       }
-    ), raycasters.end());
+    }), raycasters.end());
   }
 
   if (handTrackers.size() > 0) {
