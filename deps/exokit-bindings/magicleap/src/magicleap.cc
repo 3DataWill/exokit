@@ -2038,7 +2038,7 @@ NAN_METHOD(MLContext::Exit) {
     return;
   }
   
-  if (MLRaycastDestroy(&raycastTracker) != MLResult_Ok) {
+  if (MLRaycastDestroy(raycastTracker) != MLResult_Ok) {
     ML_LOG(Error, "%s: failed to destroy raycast handle", application_name);
     return;
   }
