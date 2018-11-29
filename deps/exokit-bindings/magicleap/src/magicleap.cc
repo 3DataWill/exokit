@@ -2698,7 +2698,7 @@ NAN_METHOD(MLContext::PostPollEvents) {
   }
 
   if (floorRequestPending) {
-    MLResult result = MLPlanesQueryGetResults(floorRequest, floorRequestHandle, floorResults, &numFloorResults);
+    MLResult result = MLPlanesQueryGetResults(floorTracker, floorRequestHandle, floorResults, &numFloorResults);
     if (result == MLResult_Ok) {
       Local<Object> asyncObject = Nan::New<Object>();
       AsyncResource asyncResource(Isolate::GetCurrent(), asyncObject, "MLPlaneTracker::Poll");
