@@ -1374,8 +1374,9 @@ const _bindWindow = (window, newWindowCb) => {
           .getInverse(localMatrix)
           .toArray(frameData.leftViewMatrix);
         frameData.leftProjectionMatrix.set(projectionArray.slice(0, 16));
-        
-        localVector.fromArray(transformArray, offset); // XXX hook this in
+
+        localVector.fromArray(transformArray, offset);
+        localMatrix.compose(localVector, zeroQuaternion, oneVector).toArray(frameDate.leftFrameMatrix);
         offset += 3;
 
         localVector.fromArray(transformArray, offset);
@@ -1387,8 +1388,9 @@ const _bindWindow = (window, newWindowCb) => {
           .toArray(frameData.rightViewMatrix);
         frameData.rightProjectionMatrix.set(projectionArray.slice(16, 32));
         
-        localVector.fromArray(transformArray, offset); // XXX hook this in
-        // offset += 3;
+        localVector.fromArray(transformArray, offset);
+        localMatrix.compose(localVector, zeroQuaternion, oneVector).toArray(frameDate.rightFrameMatrix);
+        offset += 3;
 
         let controllersArrayIndex = 0;
         leftGamepad.pose.position.set(controllersArray.slice(controllersArrayIndex, controllersArrayIndex + 3));
