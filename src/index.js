@@ -85,6 +85,7 @@ const args = (() => {
         'xr',
         'size',
         'image',
+        'download',
       ],
       alias: {
         v: 'version',
@@ -103,6 +104,7 @@ const args = (() => {
         u: 'uncapped',
         i: 'image',
         r: 'require',
+        d: 'download',
       },
     });
     return {
